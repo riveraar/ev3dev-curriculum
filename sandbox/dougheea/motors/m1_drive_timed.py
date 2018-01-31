@@ -66,21 +66,24 @@ Authors: David Fisher and Angel Rivera.
 #    print("  Timed Driving")
 #    print("--------------------------------------------")
 #    ev3.Sound.speak("Timed Driving").wait()
-# TODO: 4. Change the input questions from:
+# Done: 4. Change the input questions from:
 #   Enter a speed for the left motor (0 to 900 dps):
 #   Enter a speed for the right motor (0 to 900 dps):
 #   Enter a time to drive (seconds):
 # to:
 #   Enter a speed (0 to 900 dps):
 #   Distance to travel (inches):
-# TODO: 5. Write the code necessary to make the robot drive at that speed going roughly that distance.
+# Done: 5. Write the code necessary to make the robot drive at that speed going
+#  roughly that distance.
 #   Note, in this module, you are REQUIRED to use the pattern...
 #      run_forever()
 #      time.sleep(some_amount)
 #      stop()
 #   You may NOT use the advanced motor commands at this time like: run_to_abs_pos, run_to_rel_pos, or run_timed.
-# TODO: 6. Modify the program so that it will exit immediately if the answer to   any   question is 0.
-# TODO: 7. Formally test your work. When you think you have the problem complete run these tests to be sure:
+# Done: 6. Modify the program so that it will exit immediately if the answer to
+#    any   question is 0.
+# Done 7. Formally test your work. When you think you have the problem
+# complete run these tests to be sure:
 #   200 dps 24 inches (make sure it drives within 6 inches of the target distance)
 #   400 dps 24 inches (make sure it drives within 6 inches of the target distance)
 #   800 dps 24 inches (make sure it drives within 6 inches of the target distance)
@@ -88,7 +91,8 @@ Authors: David Fisher and Angel Rivera.
 #   400 dps 36 inches (make sure it drives within 9 inches of the target distance)
 # Do more tests if you see fit.  Ideally you should be +/- 25% of the target goal.
 #
-# TODO: 8. Call over a TA or instructor to sign your team's checkoff sheet and do a code review.
+# Done: 8. Call over a TA or instructor to sign your team's checkoff sheet and
+# do a code review.
 #
 #  Observation you should make, the pattern run_forever-->time.sleep-->stop naturally blocks code execution until done.
 # !/usr/bin/env python3
@@ -110,7 +114,7 @@ def main():
 
     # Connect two large motors on output ports B and C
     left_motor = ev3.LargeMotor(ev3.OUTPUT_B)
-    right_motor = ev3.LargeMotor(ev3.OUTPUT_C)
+    right_motor = ev3.LargeMotor(ev3.OUTPUT_D)
 
     # Check that the motors are actually connected
     assert left_motor.connected
@@ -122,8 +126,8 @@ def main():
         distance_sp = int(input("Distance to travel (inches): "))
 
         left_motor.run_forever(speed_sp=speeds_sp)
-        right_motor.run_forever(speed_sp=(speeds_sp * (2 / 3)))
-        time.sleep(distance_sp / 3.33)
+        right_motor.run_forever(speed_sp=speeds_sp)
+        time.sleep(distance_sp / (speeds_sp * 3.33))
         left_motor.stop()
         right_motor.stop(stop_action="brake")
 
