@@ -127,7 +127,7 @@ def main():
 
         left_motor.run_forever(speed_sp=speeds_sp)
         right_motor.run_forever(speed_sp=speeds_sp)
-        time.sleep(distance_sp / ((speeds_sp * 4) / 360))
+        time.sleep((distance_sp * speeds_sp) / 3600)
         left_motor.stop()
         right_motor.stop(stop_action="brake")
 
