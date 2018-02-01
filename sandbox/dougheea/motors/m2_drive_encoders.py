@@ -11,7 +11,7 @@ Authors: David Fisher and Emily Dougherty.
 #  this file below these comments.
 #   If your program says and prints anything at the start change it to print and say "Drive using encoders"
 
-# Done: 3. Add a beep after the drive motors stop (see code below).  Test your
+# Done: 3. Add a beep after the dfrive motors stop (see code below).  Test your
 # code to hear the beep AFTER movement.
 #   ev3.Sound.beep().wait()
 
