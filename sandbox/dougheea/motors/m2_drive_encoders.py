@@ -75,10 +75,12 @@ def main():
         if speeds_sp == 0 or distance_sp == 0:
             break
 
-        left_motor.run_to_rel_pos(position_sp = distance_sp * 90, speed_sp =
-        speeds_sp, stop_action="brake")
-        right_motor.run_to_rel_pos(position_sp = distance_sp * 90, speed_sp =
-        speeds_sp, stop_action="brake")
+        left_motor.run_to_rel_pos(position_sp=distance_sp * 90,
+                                  speed_sp=speeds_sp,
+                                  stop_action="brake")
+        right_motor.run_to_rel_pos(position_sp=distance_sp * 90,
+                                   speed_sp=speeds_sp,
+                                   stop_action="brake")
         left_motor.wait_while(ev3.Motor.STATE_RUNNING)
         right_motor.wait_while(ev3.Motor.STATE_RUNNING)
         ev3.Sound.beep().wait()
