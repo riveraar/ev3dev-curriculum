@@ -94,6 +94,12 @@ def main():
     # been tested and shown to work, then have that person commit their work.  All other team members need to do a
     # VCS --> Update project...
     # Once the library is implemented any team member should be able to run his code as stated in todo3.
+
+    ev3.Leds.set_color(ev3.Leds.LEFT, ev3.Leds.BLACK)
+    robot.left_motor.stop(stop_action='brake')
+    ev3.Leds.set_color(ev3.Leds.RIGHT, ev3.Leds.BLACK)
+    robot.right_motor.stop(stop_action='brake')
+
     robot.shutdown()
 
 # ----------------------------------------------------------------------
