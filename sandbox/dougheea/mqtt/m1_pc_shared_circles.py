@@ -87,7 +87,7 @@ def main():
 
 
 # ----------------------------------------------------------------------
-# Tkinter event handlers
+# Tkinter event hanmdlers
 # Left mouse click
 # ----------------------------------------------------------------------
 def left_mouse_click(event, mqtt_client):
