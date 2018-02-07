@@ -98,8 +98,8 @@ class Snatch3r(object):
         self.left_motor.run_forever(speed_sp=left_speed_entry)
 
     def stop(self):
-        self.left_motor.stop_action = 'brake'
-        self.right_motor.stop_action = 'brake'
+        self.left_motor.stop(stop_action='brake')
+        self.right_motor.stop(stop_action='brake')
 
     def loop_forever(self):
         self.running = True
