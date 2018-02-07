@@ -96,7 +96,7 @@ def drive_to_color(button_state, robot, color_to_seek):
         # Then here you can use a command like robot.color_sensor.color to check the value
         color_sensor = ev3.ColorSensor()
         current_color = color_sensor.color
-        robot.drive_forward(200, 200)
+        robot.forward(200, 200)
         if current_color == ev3.ColorSensor.COLOR_RED:
             ev3.Sound.speak('I see Red').wait()
             robot.stop()
