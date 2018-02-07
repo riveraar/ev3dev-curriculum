@@ -42,7 +42,7 @@ def main():
     # connect_to_ev3
     pc_delegate = MyDelegate()
     mqtt_client = com.MqttClient(pc_delegate)
-
+    mqtt_client.connect_to_ev3()
     root = tkinter.Tk()
     root.title("Petals on a Rose")
 
