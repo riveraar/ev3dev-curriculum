@@ -82,3 +82,21 @@ class Snatch3r(object):
         self.arm_motor.run_to_abs_pos(position_sp=0, speed_sp=self.MAX_SPEED)
         self.arm_motor.wait_while(ev3.Motor.STATE_RUNNING)
         ev3.Sound.beep()
+
+    def drive_forward(self, left_speed_entry, right_speed_entry):
+        self.left_motor.run_forever(speed_sp=left_speed_entry)
+        self.right_motor.run_forever(speed_sp=right_speed_entry)
+
+    def drive_backward(self, left_speed_entry, right_speed_entry):
+        self.left_motor.run_forever(speed_sp=-left_speed_entry)
+        self.right_motor.run_forever(speed_sp=-right_speed_entry)
+
+    def turn_left(self, right_speed_entry):
+        self.right_motor.run_forever(speed_sp=right_speed_entry)
+
+    def turn_right(self, left_speed_entry):
+        self.left_motor.run_forever(speed_sp=left_speed_entry)
+
+    def stop(self):
+        self.left_motor.stop_action = 'brake'
+        self.right_motor.stop_action = 'brake'
