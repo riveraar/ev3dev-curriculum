@@ -100,3 +100,11 @@ class Snatch3r(object):
     def stop(self):
         self.left_motor.stop_action = 'brake'
         self.right_motor.stop_action = 'brake'
+
+    def loop_forever(self):
+        self.running = True
+        while self.running:
+            time.sleep(0.01)
+
+    def shutdown(self):
+        self.running = False
