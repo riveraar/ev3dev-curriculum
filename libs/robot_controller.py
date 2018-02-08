@@ -37,6 +37,11 @@ class Snatch3r(object):
         self.color_sensor = ev3.ColorSensor()
         assert self.color_sensor
 
+        self.ir_sensor = ev3.InfraredSensor()
+        assert self.ir_sensor
+
+
+
         self.MAX_SPEED = 900
 
     def drive_inches(self, inches_to_drive, drive_speed_sp):
@@ -113,3 +118,45 @@ class Snatch3r(object):
 
     def shutdown(self):
         self.running = False
+
+    def seek_beacon(self):
+
+        beacon_seeker = ev3.BeaconSeeker(channel=1)
+
+        while not self.touch_sensor.is_pressed:
+
+            current_heading = beacon_seeker.heading  # use the beacon_seeker
+            # heading
+            current_distance = beacon_seeker.distance  # use the beacon_seeker
+            # distance
+            if current_distance == -128:
+                # If the IR Remote is not found just sit idle for this program until it is moved.
+                print("IR Remote not found. Distance is -128")
+                self.stop()
+            else:
+                if math.fabs(current_heading) < 2:
+                    if current_distance > 1:
+                        self.forward(200, 200)
+                        print("on current heading, distance =",
+                              current_distance)
+                if current_distance == 1:
+                    print('Z marks the spot!!!')
+                    time.sleep(1.0)
+                    self.stop()
+                    return True
+                if math.fabs(current_heading) > 2 and math.fabs(
+                        current_distance) < 10:
+                    if current_heading < 0:
+                        print('wrong way! turning left')
+                        self.left(200, 200)
+                    if current_heading > 0:
+                        print('wrony way! turning right')
+                        self.right(200, 200)
+                if math.fabs(current_heading) > 10:
+                    print('Heading too far off')
+            time.sleep(0.2)
+
+        # The touch_sensor was pressed to abort the attempt if this code runs.
+        print("Abandon ship!")
+        self.stop()
+        return False
