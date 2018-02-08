@@ -26,7 +26,7 @@ def main():
     # --------------------------------------------------------------
     # We have already implemented this module for you.
     # There are no TODOs in the code.  Do NOT modify it.
-    # You are not allowed to make any changes to this file.
+    # You are not allowed to make any changes to this file
     # --------------------------------------------------------------
     print("--------------------------------------------")
     print(" Arm movement via library")
