@@ -40,6 +40,9 @@ class Snatch3r(object):
         self.ir_sensor = ev3.InfraredSensor()
         assert self.ir_sensor
 
+        self.pixy = ev3.Sensor(driver_name="pixy-lego")
+        assert self.pixy
+
 
 
         self.MAX_SPEED = 900
