@@ -41,7 +41,7 @@ def main():
         # Continuously track the color until the touch sensor is pressed to end the program.
         if robot.pixy.value(1) < 150:
             robot.left(200, 200)
-        if robot.pixy.value(1 > 170):
+        if robot.pixy.value(1) > 170:
             robot.right(200, 200)
         if robot.pixy.value(1) < 170 and robot.pixy.value(1) >150:
             robot.stop()
