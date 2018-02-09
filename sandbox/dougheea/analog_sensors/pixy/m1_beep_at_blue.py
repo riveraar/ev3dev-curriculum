@@ -15,7 +15,7 @@ Authors: David Fisher and Bryce Nesius.
 
 import ev3dev.ev3 as ev3
 import time
-
+import mqtt_remote_method_calls as com
 import robot_controller as robo
 
 
@@ -28,6 +28,8 @@ def main():
 
     robot = robo.Snatch3r()
     robot.pixy.mode = "SIG1"
+    mqtt_client = com.MqttClient()
+    mqtt_client.connect_to_pc()
 
     while not robot.touch_sensor.is_pressed:
         # done: 2. Implement the module as described in the opening comment block.
