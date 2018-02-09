@@ -44,7 +44,7 @@ def main():
         if width > 0:
             ev3.Sound.beep()
 
-        time.sleep(0.1)
+        time.sleep(1)
 
     print("Goodbye!")
     ev3.Sound.speak("Goodbye").wait()
