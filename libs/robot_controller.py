@@ -163,3 +163,51 @@ class Snatch3r(object):
         print("Abandon ship!")
         self.stop()
         return False
+
+    def do_green(self):
+        self.pixy.mode = "SIG1"  # make green = to sig 1!!!
+        while not self.touch_sensor.is_pressed:
+
+            width = self.pixy.value(3)
+            print("(X, Y)=({}, {}) Width={} Height={}".format(
+                self.pixy.value(1), self.pixy.value(2), self.pixy.value(3),
+                self.pixy.value(4)))
+            if width > 0:
+                ev3.Sound.beep()
+
+            time.sleep(1)
+
+        print("Goodbye!")
+        ev3.Sound.speak("Goodbye").wait()
+
+    def do_blue(self):
+        self.pixy.mode = "SIG2"  # make blue = to sig 2!!!
+        while not self.touch_sensor.is_pressed:
+
+            width = self.pixy.value(3)
+            print("(X, Y)=({}, {}) Width={} Height={}".format(
+                self.pixy.value(1), self.pixy.value(2), self.pixy.value(3),
+                self.pixy.value(4)))
+            if width > 0:
+                ev3.Sound.beep()
+
+            time.sleep(1)
+
+        print("Goodbye!")
+        ev3.Sound.speak("Goodbye").wait()
+
+    def do_red(self):
+        self.pixy.mode = "SIG3"  # make red = to sig 3!!!
+        while not self.touch_sensor.is_pressed:
+
+            width = self.pixy.value(3)
+            print("(X, Y)=({}, {}) Width={} Height={}".format(
+                self.pixy.value(1), self.pixy.value(2), self.pixy.value(3),
+                self.pixy.value(4)))
+            if width > 0:
+                ev3.Sound.beep()
+
+            time.sleep(1)
+
+        print("Goodbye!")
+        ev3.Sound.speak("Goodbye").wait()
