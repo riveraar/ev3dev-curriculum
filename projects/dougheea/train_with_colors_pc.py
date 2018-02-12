@@ -27,7 +27,7 @@ def main():
 
     color_entry_button = ttk.Button(frame1, text='Color Entry')
     color_entry_button.grid(row=4, column=1)
-    color_entry_button["comand"] = lambda: choose_color(mqtt_client, entry)
+    color_entry_button["command"] = lambda: choose_color(mqtt_client, entry)
 
     root.mainloop()
 
