@@ -1,5 +1,6 @@
 """Chase Tail is a function that will have the robot dog 'chaes it's tail'
-until it sees an object in front of it.
+until it sees an object in front of it This works by using the IR sensor to
+detect if there is an obstacle in the way.
 Author: Emily Dougherty"""
 
 
