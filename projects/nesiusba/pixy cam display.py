@@ -13,7 +13,7 @@ class MyDelegate(object):
         self.rectangle_tag = rectangle_tag
 
     def on_rectangle_update(self, x, y, width, height):
-        self.canvas.coords(self.rectangle_tag, [x, y, x + width, y + height])
+        self.canvas.coords(self.rqectangle_tag, [x, y, x + width, y + height])
 
 
 def main():

@@ -1,7 +1,6 @@
 # My project is going to consist of a single robot utilizing a pixy camera and color sensor, and a IR sensor.
 # I will have the advanced track or just a regular circle track.
 # The robot will follow the line around.
-# Next the robot will use the IR sensor to stop anytime an object is in front of it.
 
 # I will have 3 color signatures
 # 1. Red = robot stops
@@ -56,8 +55,6 @@ def follow_the_line(robot, white_level, black_level):
     mqtt_client = com.MqttClient(robot)
     mqtt_client.connect_to_pc()
     while not robot.touch_sensor.is_pressed:
-        robot.stop()
-
 
         robot.pixy.mode = "SIG1"
         mqtt_client.send_message('on_rectangle_update', [robot.pixy.value(1), robot.pixy.value(2), robot.pixy.value(3),
