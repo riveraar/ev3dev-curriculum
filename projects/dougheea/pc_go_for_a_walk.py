@@ -1,3 +1,8 @@
+"""This program will take the dog for a walk. This is the pc side of the
+code, so a GUI will be used to control the robots direction of travel and
+speed.
+Author: Emily Dougherty"""
+
 import tkinter
 from tkinter import ttk
 
@@ -6,12 +11,13 @@ import mqtt_remote_method_calls as com
 
 def main():
 
-    mqtt_client = com.MqttClient()
+    mqtt_client = com.MqttClient()  # creating the client to talk to the robot
     mqtt_client.connect_to_ev3()
 
     root = tkinter.Tk()
     root.title("MQTT Remote")
 
+    #  creating the GUI display and buttons:
     main_frame = ttk.Frame(root, padding=20, relief='raised')
     main_frame.grid()
 
@@ -87,6 +93,8 @@ def main():
     e_button['command'] = (lambda: quit_program(mqtt_client, True))
 
     root.mainloop()
+
+#  callbacks for making the robot move:
 
 
 def forward(mqtt_client, left_speed_entry, right_speed_entry):

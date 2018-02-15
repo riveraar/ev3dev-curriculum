@@ -1,4 +1,7 @@
-"""blah"""
+"""This code will allow the 'dogbot' to be trained to recognize certain
+colors (even though dogs are blind!!) The user will enter a vaild color into
+the entry box on the GUI and then the dogbot will know to look for that
+color. When the color is found, the dogbot will bark."""
 
 import tkinter
 from tkinter import ttk
@@ -8,8 +11,9 @@ import mqtt_remote_method_calls as com
 
 def main():
     mqtt_client = com.MqttClient()
-    mqtt_client.connect_to_ev3()
+    mqtt_client.connect_to_ev3() #  connected to the robot
 
+    # creating the GUI window:
     root = tkinter.Tk()
     root.title = "Color Training"
 
@@ -30,6 +34,8 @@ def main():
     color_entry_button["command"] = lambda: choose_color(mqtt_client, entry)
 
     root.mainloop()
+
+#  this method calls these functions from the robot library
 
 
 def choose_color(mqtt_client, entry):

@@ -176,8 +176,9 @@ class Snatch3r(object):
                 self.pixy.value(1), self.pixy.value(2), self.pixy.value(3),
                 self.pixy.value(4)))
             if width > 0:
-                ev3.Sound.beep()
+                ev3.Sound.speak("woof woof")
                 print(' found green')
+                time.sleep(.2)
 
             time.sleep(1)
 
@@ -193,8 +194,9 @@ class Snatch3r(object):
                 self.pixy.value(1), self.pixy.value(2), self.pixy.value(3),
                 self.pixy.value(4)))
             if width > 0:
-                ev3.Sound.beep()
+                ev3.Sound.speak("bow wow")
                 print('found orange')
+                time.sleep(.2)
 
             time.sleep(1)
 
@@ -210,8 +212,9 @@ class Snatch3r(object):
                 self.pixy.value(1), self.pixy.value(2), self.pixy.value(3),
                 self.pixy.value(4)))
             if width > 0:
-                ev3.Sound.beep()
+                ev3.Sound.speak("bark bark bark")
                 print('found pink')
+                time.sleep(.2)
 
             time.sleep(1)
 
