@@ -59,6 +59,7 @@ def follow_the_line(robot, white_level, black_level):
         robot.pixy.mode = "SIG1"
         mqtt_client.send_message('on_rectangle_update', [robot.pixy.value(1), robot.pixy.value(2), robot.pixy.value(3),
                                                          robot.pixy.value(4)])
+        # Sees the red signature and comes to a stop
         if robot.pixy.value(3) > 50:
             print('STOP! Red Light')
             print("(X, Y)=({}, {}) Width={} Height={}".format(
@@ -69,6 +70,7 @@ def follow_the_line(robot, white_level, black_level):
         robot.pixy.mode = "SIG2"
         mqtt_client.send_message('on_rectangle_update', [robot.pixy.value(1), robot.pixy.value(2), robot.pixy.value(3),
                                                          robot.pixy.value(4)])
+        # Sees the Green signature and the robot starts its motors and goes.
         if robot.pixy.value(3) > 50:
             print('GO! Green Light')
             robot.isStopped = False
@@ -78,6 +80,7 @@ def follow_the_line(robot, white_level, black_level):
         robot.pixy.mode = "SIG3"
         mqtt_client.send_message('on_rectangle_update', [robot.pixy.value(1), robot.pixy.value(2), robot.pixy.value(3),
                                                          robot.pixy.value(4)])
+        # If the Yellow signature is seen the robot slows down.
         if robot.pixy.value(3) > 50:
             robot.isStopped = False
             robot.leftSpeed = 100
@@ -87,9 +90,11 @@ def follow_the_line(robot, white_level, black_level):
             robot.pixy.value(4)))
         mqtt_client.send_message('on_rectangle_update', [robot.pixy.value(1), robot.pixy.value(2), robot.pixy.value(3),
                                                          robot.pixy.value(4)])
-
+        # using boolean logic I made it so that isStopped is false, which would mean it is stopped
+        # The Go code mutates the value of isStopped to True.
         if robot.isStopped:
             robot.stop()
+        # This code below is the line following code. The rest(above) is for the pixy camera.
         else:
             if robot.color_sensor.reflected_light_intensity <= black_level:
                 robot.forward(robot.leftSpeed, robot.rightSpeed)
