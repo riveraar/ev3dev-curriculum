@@ -152,15 +152,17 @@ class Snatch3r(object):
                     return True
                 if math.fabs(current_heading) > 2 and math.fabs(
                         current_distance) < 10:
-                    if current_heading < 0:
+                    if current_heading < 2:
                         print('wrong way! turning left')
                         self.left(200, 200)
-                    if current_heading > 0:
+                        time.sleep(.2)
+                    if current_heading >= -2:
                         print('wrony way! turning right')
                         self.right(200, 200)
+                        time.sleep(.2)
                 if math.fabs(current_heading) > 10:
                     print('Heading too far off')
-            time.sleep(0.2)
+            time.sleep(.5)
 
         # The touch_sensor was pressed to abort the attempt if this code runs.
         print("Abandon ship!")
@@ -220,3 +222,43 @@ class Snatch3r(object):
 
         print("Goodbye!")
         ev3.Sound.speak("Goodbye").wait()
+
+    def small_cold(self, direction, distance):
+        if direction == "Left":
+            ev3.Sound.speak('Turning a little to the left...')
+            self.turn_degrees(-45, 500)
+            self.drive_inches(distance, 500)
+        elif direction == "Right":
+            ev3.Sound.speak("Turning a little to the right...")
+            self.turn_degrees(45, 500)
+            self.drive_inches(distance, 500)
+
+    def big_cold(self, direction, distance):
+        if direction == "Left":
+            ev3.Sound.speak('Turning to the left...')
+            self.turn_degrees(-90, 500)
+            self.drive_inches(distance, 500)
+        elif direction == "Right":
+            ev3.Sound.speak("Turning to the right...")
+            self.turn_degrees(90, 500)
+            self.drive_inches(distance, 500)
+
+    def little_hot(self, direction, distance):
+        if direction == "Left":
+            ev3.Sound.speak('Turning a litle to the left...')
+            self.turn_degrees(-25, 500)
+            self.drive_inches(distance, 500)
+        elif direction == "Right":
+            ev3.Sound.speak("Turning a little to the right...")
+            self.turn_degrees(25, 500)
+            self.drive_inches(distance, 500)
+
+    def big_hot(self, direction, distance):
+        if direction == "Left":
+            ev3.Sound.speak('Turning to the left...')
+            self.turn_degrees(-10, 500)
+            self.drive_inches(distance, 500)
+        elif direction == "Right":
+            ev3.Sound.speak("Turning to the right...")
+            self.turn_degrees(10, 500)
+            self.drive_inches(distance, 500)
