@@ -1,9 +1,10 @@
+import ev3dev.ev3 as ev3
+import time
+
+import robot_controller as robo
 import tkinter
 from tkinter import ttk
 import mqtt_remote_method_calls as com
-import ev3dev.ev3 as ev3
-import time
-import robot_controller as robo
 
 
 def main():
@@ -74,7 +75,7 @@ def main():
     while not robot.touch_sensor.is_pressed:
 
         if robot.ir_sensor.proximity < 10:
-            grab_object(robot)
+            robot.grab_object()
             break
 
         time.sleep(0.05)
@@ -115,15 +116,6 @@ def quit_program(mqtt_client, shutdown_ev3):
         mqtt_client.send_message("shutdown")
     mqtt_client.close()
     exit()
-
-
-def grab_object(robot):
-    while robot.ir_sensor.proximity > 1:
-        robot.forward(500, 500)
-
-    robot.arm_up()
-
-    ev3.Sound.speak("I got the thing. Please be proud of me, dad.").wait()
 
 
 main()

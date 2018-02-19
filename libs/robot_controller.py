@@ -226,39 +226,47 @@ class Snatch3r(object):
     def small_cold(self, direction, distance):
         if direction == "Left":
             ev3.Sound.speak('Turning a little to the left...')
-            self.turn_degrees(-45, 500)
+            self.turn_degrees(45, 500)
             self.drive_inches(distance, 500)
         elif direction == "Right":
             ev3.Sound.speak("Turning a little to the right...")
-            self.turn_degrees(45, 500)
+            self.turn_degrees(-45, 500)
             self.drive_inches(distance, 500)
 
     def big_cold(self, direction, distance):
         if direction == "Left":
             ev3.Sound.speak('Turning to the left...')
-            self.turn_degrees(-90, 500)
+            self.turn_degrees(90, 500)
             self.drive_inches(distance, 500)
         elif direction == "Right":
             ev3.Sound.speak("Turning to the right...")
-            self.turn_degrees(90, 500)
+            self.turn_degrees(-90, 500)
             self.drive_inches(distance, 500)
 
-    def little_hot(self, direction, distance):
+    def small_hot(self, direction, distance):
         if direction == "Left":
             ev3.Sound.speak('Turning a litle to the left...')
-            self.turn_degrees(-25, 500)
+            self.turn_degrees(25, 500)
             self.drive_inches(distance, 500)
         elif direction == "Right":
             ev3.Sound.speak("Turning a little to the right...")
-            self.turn_degrees(25, 500)
+            self.turn_degrees(-25, 500)
             self.drive_inches(distance, 500)
 
     def big_hot(self, direction, distance):
         if direction == "Left":
             ev3.Sound.speak('Turning to the left...')
-            self.turn_degrees(-10, 500)
+            self.turn_degrees(10, 500)
             self.drive_inches(distance, 500)
         elif direction == "Right":
             ev3.Sound.speak("Turning to the right...")
-            self.turn_degrees(10, 500)
+            self.turn_degrees(-10, 500)
             self.drive_inches(distance, 500)
+
+    def grab_object(self):
+        while self.ir_sensor.proximity > 1:
+            self.forward(500, 500)
+
+        self.arm_up()
+
+        ev3.Sound.speak("I got the thing. Please be proud of me, dad.").wait()
