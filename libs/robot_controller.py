@@ -23,7 +23,7 @@ class Snatch3r(object):
     # (and delete these comments)
     def __init__(self):
         self.left_motor = ev3.LargeMotor(ev3.OUTPUT_B)
-        self.right_motor = ev3.LargeMotor(ev3.OUTPUT_D)
+        self.right_motor = ev3.LargeMotor(ev3.OUTPUT_C)
         self.isStopped = True
         self.leftSpeed = 200
         self.rightSpeed = 200
@@ -264,9 +264,12 @@ class Snatch3r(object):
             self.drive_inches(distance, 500)
 
     def grab_object(self):
-        while self.ir_sensor.proximity > 1:
+        while self.ir_sensor.proximity > 3:
             self.forward(500, 500)
 
+        self.stop()
         self.arm_up()
 
         ev3.Sound.speak("I got the thing. Please be proud of me, dad.").wait()
+
+        self.arm_down()
